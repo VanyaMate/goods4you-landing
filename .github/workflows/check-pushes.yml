@@ -42,7 +42,7 @@ jobs:
       - run: npm run build
 
   pw_tests:
-    if: 'contains(github.event.head_commit.message, "pw-e2e-test")'
+    if: contains(github.event.head_commit.message, 'pw_test')
     needs:
       - install
       - simple_tests
