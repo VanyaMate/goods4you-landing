@@ -1,29 +1,23 @@
 import React from 'react';
-import { cn } from '@vanyamate/helpers/react/classname';
-import css from './IconM.module.scss';
+import {
+    useIconMComposeClassName,
+} from '@/shared/ui/icons/IconM/hooks/useIconMComposeClassName.ts';
 
 
-export type IconMSizes =
+export type IconMSize =
     'small'
     | 'medium'
     | 'large';
 
 export type IconMProps =
     {
-        size?: IconMSizes;
+        size?: IconMSize;
     }
     & React.ComponentPropsWithoutRef<'span'>;
 
 const IconM: React.FC<IconMProps> = (props) => {
     const { className, size, ...other } = props;
-    const compositeClassName            = cn(
-        'material-symbols-outlined',
-        className,
-        css.container,
-        size === 'small' && css.small,
-        (size === 'medium' || size === undefined) && css.medium,
-        size === 'large' && css.large,
-    );
+    const compositeClassName: string    = useIconMComposeClassName(className, size);
 
     return (
         <span { ...other } className={ compositeClassName }/>

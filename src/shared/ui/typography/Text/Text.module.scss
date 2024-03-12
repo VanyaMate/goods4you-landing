@@ -1,3 +1,33 @@
 .container {
+    &.main_color {
+        color : var(--color-main)
+    }
 
+    &.inversion_color {
+        color : var(--color-invert)
+    }
+
+    &.link_color {
+        color : var(--purple);
+    }
+
+    &.danger_color {
+        color : var(--red)
+    }
+
+    &.light_color {
+        color : var(--color-light)
+    }
+
+    &.small_size {
+        font-size : var(--font-size-small);
+    }
+
+    &.medium_size {
+        font-size : var(--font-size-medium);
+    }
+
+    &.large_size {
+        font-size : var(--font-size-large);
+    }
 }

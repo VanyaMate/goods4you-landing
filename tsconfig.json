@@ -31,7 +31,8 @@
         }
     },
     "include": [
-        "src"
+        "src",
+        "_tests_"
     ],
     "references": [
         {

@@ -1,24 +1,37 @@
 import React from 'react';
+import {
+    useTextComposeClassName,
+} from '@/shared/ui/typography/Text/hooks/useTextComposeClassName.ts';
 
 
-export type TextType =
+export type TextColor =
     'main'
     | 'inversion'
     | 'link'
-    | 'danger';
+    | 'danger'
+    | 'light';
+
+export type TextSize =
+    'small'
+    | 'medium'
+    | 'large';
 
 export type TextProps =
     {
         inline?: boolean;
-        type?: TextType;
+        color?: TextColor;
+        size?: TextSize;
     }
     & React.ComponentPropsWithoutRef<'p'>;
 
 const Text: React.FC<TextProps> = (props) => {
-    const { inline, ...other } = props;
+    const { inline, size, color, className, ...other } = props;
+    const composedClassName: string                    = useTextComposeClassName(className, size, color);
 
     return (
-        inline ? <span { ...other }/> : <p { ...other }/>
+        inline
+        ? <span { ...other } className={ composedClassName }/>
+        : <p { ...other } className={ composedClassName }/>
     );
 };
 

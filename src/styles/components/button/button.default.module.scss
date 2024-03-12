@@ -1,0 +1,37 @@
+:root body.button-default {
+    :global {
+        $buttonPaddingVertical   : 47px;
+        $buttonPaddingHorizontal : 22px;
+        $buttonBorderWidth       : 1px;
+
+        .button {
+            display       : block;
+            width         : fit-content;
+            padding       : $buttonPaddingHorizontal $buttonPaddingVertical;
+            border-radius : var(--border-radius);
+            cursor        : pointer;
+
+            &._primary {
+                background : var(--background-primary);
+                color      : var(--color-invert);
+            }
+
+            &._second {
+                background : var(--background-second);
+                color      : var(--color-invert);
+            }
+
+            &._light {
+                background : transparent;
+                color      : var(--color-main);
+            }
+
+            &._border {
+                background : transparent;
+                color      : var(--color-main);
+                border     : $buttonBorderWidth solid var(--color-main);
+                padding    : calc($buttonPaddingHorizontal - $buttonBorderWidth) calc($buttonPaddingVertical - $buttonBorderWidth);
+            }
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import ComponentRenderWithAriaIt
-    from '$/_tests_/components/Component.render-with-aria.it.tsx';
+    from '$/_tests_/vitest/components/Component.render-with-aria.it.tsx';
 import Title, { TitleProps } from '@/shared/ui/typography/Title/Title.tsx';
 
 

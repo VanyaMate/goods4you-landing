@@ -1,0 +1,46 @@
+.container {
+    display         : flex;
+    justify-content : space-between;
+    align-items     : center;
+    gap             : var(--offset-medium);
+
+    .list {
+        list-style-type : none;
+        display         : flex;
+        gap             : var(--offset-large);
+        white-space     : nowrap;
+
+        &.hidden {
+            width      : 0;
+            height     : 0;
+            overflow   : hidden;
+            visibility : hidden;
+        }
+    }
+
+    .burgerButton {
+
+    }
+}
+
+.burgerMenu {
+    position        : fixed;
+    left            : 0;
+    top             : 0;
+    width           : 100dvw;
+    height          : 100dvh;
+    z-index         : 100;
+    display         : flex;
+    flex-direction  : column;
+    justify-content : center;
+    gap             : var(--offset-small);
+    background      : rgba(0, 0, 0, .3);
+
+    .list_burger {
+        list-style-type : none;
+    }
+
+    &.hidden_burger {
+        display : none;
+    }
+}

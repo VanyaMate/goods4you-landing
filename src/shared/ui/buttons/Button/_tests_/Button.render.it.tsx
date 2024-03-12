@@ -1,4 +1,4 @@
-import ComponentRenderIt from '$/_tests_/components/Component.render.it.tsx';
+import ComponentRenderIt from '$/_tests_/vitest/components/Component.render.it.tsx';
 import Button, { ButtonProps } from '@/shared/ui/buttons/Button/Button.tsx';
 
 

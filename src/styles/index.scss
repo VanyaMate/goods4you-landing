@@ -1,0 +1,16 @@
+// Common
+@import "font-size/font-size.default.module";
+@import "palette/palette.default-light.module";
+@import "sizes/sizes.default.module";
+@import "offset/offset.default.module";
+
+// Components
+@import "components/button/button.default.module";
+
+* {
+    margin      : 0;
+    padding     : 0;
+    box-sizing  : border-box;
+
+    font-family : 'Jost', sans-serif;
+}

@@ -9,7 +9,7 @@ export default () => {
     render(
         <>
             <Button>Default</Button>
-            <Button styleType="main">Main</Button>
+            <Button styleType="primary">Main</Button>
             <Button styleType="second">Second</Button>
             <Button styleType="light">Light</Button>
             <Button styleType="danger">Danger</Button>
@@ -21,8 +21,8 @@ export default () => {
     const lightButton: HTMLElement   = screen.getByText('Light');
     const dangerButton: HTMLElement  = screen.getByText('Danger');
 
-    expect(defaultButton.classList.contains(css.main)).toBe(true);
-    expect(mainButton.classList.contains(css.main)).toBe(true);
+    expect(defaultButton.classList.contains(css.primary)).toBe(true);
+    expect(mainButton.classList.contains(css.primary)).toBe(true);
     expect(secondButton.classList.contains(css.second)).toBe(true);
     expect(lightButton.classList.contains(css.light)).toBe(true);
     expect(dangerButton.classList.contains(css.danger)).toBe(true);
