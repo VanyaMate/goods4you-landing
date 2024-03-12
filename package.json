@@ -10,10 +10,12 @@
         "test": "vitest",
         "test:pw-docker:build": "docker build -t playwright-test:latest .",
         "test:pw-docker": "docker run --rm -v snapshots:/playwright/screenshots -e CI=true playwright-test:latest npm run test:pw-linux",
+        "test:pw-docker:update": "docker run -e CI=true playwright-test:latest npm run test:pw-update-linux",
         "test:pw-copy": "docker cp 1b1:/usr/src/app/__snapshots__ .",
         "test:pw": "playwright test -c playwright-ct.config.ts",
         "test:pw-linux": "playwright test -c playwright-ct-linux.config.ts",
         "test:pw-update": "playwright test -c playwright-ct.config.ts --update-snapshots",
+        "test:pw-update-linux": "playwright test -c playwright-ct-linux.config.ts --update-snapshots",
         "preview": "vite preview"
     },
     "dependencies": {

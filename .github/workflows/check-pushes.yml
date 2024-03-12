@@ -68,7 +68,7 @@ jobs:
           cache: 'npm'
       - run: npm i
       - run: npm run test:pw-docker:build
-      - run: npm run test:pw-update
+      - run: npm run test:pw-docker:update
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
