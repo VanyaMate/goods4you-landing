@@ -25,11 +25,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm i
-      - run: npx playwright install --with-deps
       - run: npm run lint
       - run: npm run test
-      - run: npm run test:pw
       - run: npm run build
+      - run: npm run test:pw-docker:build
+      - run: npm run test:pw-docker
       - name: Telegram success notification
         uses: VanyaMate/github-action-telegram-notification@v0.20
         with:
