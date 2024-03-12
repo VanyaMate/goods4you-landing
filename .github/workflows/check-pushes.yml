@@ -73,10 +73,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Update PW-snapshot"
-          branch: ${{ github.ref }}
-          commit_user_name: "[BOT] Update snapshot"
-          commit_user_email: "actions@vm.com"
-          commit_author: "[BOT] Update snapshot <actions@vm.com>"
 
   notify:
     if: ${{ always() && contains(github.event.head_commit.message, '%tg_notify%')}}
