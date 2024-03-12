@@ -8,6 +8,7 @@
         "build": "tsc && vite build",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "test": "vitest",
+        "pw:install": "npx playwright install --with-deps",
         "test:pw": "playwright test -c playwright-ct.config.ts",
         "test:pw-copy": "docker cp 1b1:/usr/src/app/__snapshots__ .",
         "test:pw-update": "playwright test -c playwright-ct.config.ts --update-snapshots",

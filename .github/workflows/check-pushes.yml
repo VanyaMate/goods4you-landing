@@ -44,14 +44,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm i
-      - run: npm run test:pw-docker:build
-      - run: npm run test:pw-docker
+      - run: npm run pw:install
+      - run: npm run test:pw-linux
 
   pw_update:
     if: contains(github.event.head_commit.message, '%pw_update%')
@@ -69,9 +71,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm i
-      - run: npm run test:pw-docker:build
-      - run: npm run test:pw-docker:update
-      - run: git add -f .
+      - run: npm run pw:install
+      - run: npm run test:pw-update-linux
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
