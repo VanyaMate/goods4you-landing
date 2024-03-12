@@ -9,10 +9,8 @@ on:
       - '!master'
 
 jobs:
-  build:
-
+  install:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [ 18.x ]
@@ -25,11 +23,45 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm i
+
+  simple_tests:
+    needs: install
+    runs-on: ubuntu-latest
+
+    steps:
       - run: npm run lint
       - run: npm run test
+
+  build:
+    needs:
+      - install
+      - simple_tests
+    runs-on: ubuntu-latest
+
+    steps:
       - run: npm run build
+
+  pw_tests:
+    if: 'contains(github.event.head_commit.message, "pw-e2e-test")'
+    needs:
+      - install
+      - simple_tests
+      - build
+    runs-on: ubuntu-latest
+
+    steps:
       - run: npm run test:pw-docker:build
       - run: npm run test:pw-docker
+
+  notify:
+    needs:
+      - install
+      - simple_tests
+      - build
+      - pw_tests
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Telegram success notification
         uses: VanyaMate/github-action-telegram-notification@v0.20
         with:
