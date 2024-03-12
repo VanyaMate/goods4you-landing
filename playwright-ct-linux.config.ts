@@ -8,7 +8,7 @@ import react from '@vitejs/plugin-react-swc';
 export default defineConfig({
     testDir: './',
     /* The base directory, relative to the config file, for snapshot files created with toMatchSnapshot and toHaveScreenshot. */
-    snapshotDir: './__snapshots__',
+    snapshotDir: '__snapshots__',
     testMatch  : '*.e2e-test.tsx',
     /* Maximum time one test can run for. */
     timeout: 10 * 1000,
