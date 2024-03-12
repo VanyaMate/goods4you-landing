@@ -61,6 +61,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
@@ -69,6 +71,7 @@ jobs:
       - run: npm i
       - run: npm run test:pw-docker:build
       - run: npm run test:pw-docker:update
+      - run: git add -f .
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
