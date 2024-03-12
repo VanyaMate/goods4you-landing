@@ -85,6 +85,7 @@ jobs:
       - simple_tests
       - build
       - pw_tests
+      - pw_update
 
     steps:
       - name: Telegram success notification
