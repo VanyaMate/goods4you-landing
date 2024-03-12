@@ -8,6 +8,9 @@
         "build": "tsc && vite build",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "test": "vitest",
+        "test:pw-docker:build": "docker build -t playwright-test .",
+        "test:pw-docker": "docker run -v snapshots:/playwright/screenshots playwright-test npm run test:pw",
+        "test:pw-snapshots-copy": "docker cp 81e:/usr/src/app/__snapshots__ .",
         "test:pw": "playwright test -c playwright-ct.config.ts",
         "test:pw-update": "playwright test -c playwright-ct.config.ts --update-snapshots",
         "preview": "vite preview"
