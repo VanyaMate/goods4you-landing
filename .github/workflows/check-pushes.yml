@@ -54,7 +54,7 @@ jobs:
       - run: npm run test:pw-docker
 
   notify:
-    if: contains(github.event.head_commit.message, '%tg_notify%')
+    if: ${{ always() && contains(github.event.head_commit.message, '%tg_notify%')}}
     runs-on: ubuntu-latest
     needs:
       - simple_tests
