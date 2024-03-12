@@ -20,7 +20,7 @@ export default defineConfig({
     test   : {
         environment: 'jsdom',
         globals    : true,
-        setupFiles : './_tests_/setup.ts',
+        setupFiles : './_tests_/vitest/setup.ts',
         css        : {
             modules: {
                 classNameStrategy: 'stable',
