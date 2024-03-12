@@ -7,4 +7,4 @@ RUN npx playwright install --with-deps
 
 COPY . .
 
-CMD ["npm", "test:pw"]
+CMD ["npm", "test:pw-linux"]
