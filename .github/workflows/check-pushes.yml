@@ -70,7 +70,7 @@ jobs:
       - run: npm run test:pw-docker:build
       - run: npm run test:pw-docker:update
       - name: Commit and push changes
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update PW-snapshot"
 

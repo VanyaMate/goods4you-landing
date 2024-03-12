@@ -14,6 +14,7 @@ test('Site menu on desktop size', async ({ mount, page }) => {
                 <div key="2" style={ { width: 100 } }>Item 2</div>,
                 <div key="3" style={ { width: 100 } }>Item 3</div>,
                 <div key="4" style={ { width: 100 } }>Item 4</div>,
+                <div key="5" style={ { width: 100 } }>Item 5</div>,
             ] }
             siteLogo={ <div style={ { width: 150 } }>Large logo size</div> }
         />,
@@ -24,6 +25,7 @@ test('Site menu on desktop size', async ({ mount, page }) => {
     await expect(component).toContainText('Item 2');
     await expect(component).toContainText('Item 3');
     await expect(component).toContainText('Item 4');
+    await expect(component).toContainText('Item 5');
 
     await delay(100);
 
