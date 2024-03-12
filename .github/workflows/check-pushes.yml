@@ -9,11 +9,9 @@ on:
       - '!master'
 
 jobs:
-  install:
+  simple_tests:
+    if: contains(github.event.head_commit.message, 'test')
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 18.x ]
 
     steps:
       - uses: actions/checkout@v3
@@ -23,39 +21,46 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm i
-
-  simple_tests:
-    needs: install
-    runs-on: ubuntu-latest
-
-    steps:
       - run: npm run lint
       - run: npm run test
 
   build:
+    if: contains(github.event.head_commit.message, 'build')
     needs:
-      - install
       - simple_tests
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm i
       - run: npm run build
 
   pw_tests:
     if: contains(github.event.head_commit.message, 'pw_test')
     needs:
-      - install
       - simple_tests
       - build
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm i
       - run: npm run test:pw-docker:build
       - run: npm run test:pw-docker
 
   notify:
+    if: contains(github.event.head_commit.message, 'tg_notify')
     needs:
-      - install
       - simple_tests
       - build
       - pw_tests
