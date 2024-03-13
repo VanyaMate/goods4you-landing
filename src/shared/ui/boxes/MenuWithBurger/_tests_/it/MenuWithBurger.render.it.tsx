@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import SiteMenu from '@/widget/pages/ui/SiteMenu/SiteMenu.tsx';
+import MenuWithBurger from '@/shared/ui/boxes/MenuWithBurger/MenuWithBurger.tsx';
 
 
 export default () => {
     render(
-        <SiteMenu
+        <MenuWithBurger
             items={ [
                 'Item 1', 'Item 2',
             ] }

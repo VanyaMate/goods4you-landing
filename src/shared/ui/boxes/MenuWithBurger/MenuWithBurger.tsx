@@ -1,14 +1,14 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import css from './SiteMenu.module.scss';
-import { cn } from '@vanyamate/helpers/react/classname';
+import css from './MenuWithBurger.module.scss';
+import { cn } from '@vanyamate/helpers';
 
 
-export type SiteMenuProps = {
+export type MenuWithBurgerProps = {
     siteLogo: React.ReactNode;
     items: React.ReactNode[];
 };
 
-const SiteMenu: React.FC<SiteMenuProps> = (props) => {
+const MenuWithBurger: React.FC<MenuWithBurgerProps> = (props) => {
     const { siteLogo, items }       = props;
     const container                 = useRef<HTMLElement>(null);
     const logo                      = useRef<HTMLDivElement>(null);
@@ -71,4 +71,4 @@ const SiteMenu: React.FC<SiteMenuProps> = (props) => {
     );
 };
 
-export default React.memo(SiteMenu);
+export default React.memo(MenuWithBurger);

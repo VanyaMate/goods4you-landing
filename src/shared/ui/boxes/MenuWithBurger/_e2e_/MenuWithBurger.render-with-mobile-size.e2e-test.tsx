@@ -1,14 +1,14 @@
 import { test, expect } from '@playwright/experimental-ct-react';
-import SiteMenu from '@/widget/pages/ui/SiteMenu/SiteMenu.tsx';
 import { delay } from '$/_tests_/vitest/helpers/delay.ts';
+import MenuWithBurger from '@/shared/ui/boxes/MenuWithBurger/MenuWithBurger.tsx';
 
 
 test.use({ viewport: { width: 320, height: 500 } });
 
-test('Site menu on mobile size', async ({ mount, page }) => {
+test('Menu with burger on mobile size', async ({ mount, page }) => {
     // Mount a component. Returns locator pointing to the component.
     const component = await mount(
-        <SiteMenu
+        <MenuWithBurger
             items={ [
                 <div key="1" style={ { width: 100 } }>Item 1</div>,
                 <div key="2" style={ { width: 100 } }>Item 2</div>,

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import Text from '@/shared/ui/typography/Text/Text.tsx';
 import { expect } from 'vitest';
-import css from '../Text.module.scss';
+import css from '../../Text.module.scss';
 
 
 export default () => {

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import IconM from '@/shared/ui/icons/IconM/IconM.tsx';
 import { expect } from 'vitest';
-import css from '../IconM.module.scss';
+import css from '../../IconM.module.scss';
 
 
 export default () => {

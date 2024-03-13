@@ -1,8 +1,8 @@
 import React from 'react';
-import SiteMenu from '@/widget/pages/ui/SiteMenu/SiteMenu.tsx';
 import Title from '@/shared/ui/typography/Title/Title.tsx';
 import Link from '@/shared/ui/links/Link/Link.tsx';
 import Text from '@/shared/ui/typography/Text/Text.tsx';
+import SiteMenu from '@/shared/pages/SiteMenu/SiteMenu.tsx';
 
 
 export type AppProps = {};
