@@ -4,9 +4,9 @@ import MenuWithBurger from '@/shared/ui/boxes/MenuWithBurger/MenuWithBurger.tsx'
 import React from 'react';
 
 
-test.use({ viewport: { width: 1300, height: 500 } });
+test.use({ viewport: { width: 320, height: 500 } });
 
-test('Menu with burger on desktop size', async ({ mount, page }) => {
+test('Menu with burger on mobile size', async ({ mount }) => {
     // Mount a component. Returns locator pointing to the component.
     const component = await mount(
         <MenuWithBurger
@@ -28,10 +28,6 @@ test('Menu with burger on desktop size', async ({ mount, page }) => {
                     text: 'Link 4',
                     href: '#',
                 },
-                {
-                    text: 'Link 5',
-                    href: '#',
-                },
             ] }
             siteLogo={
                 <h1>Large logo size</h1>
@@ -44,12 +40,10 @@ test('Menu with burger on desktop size', async ({ mount, page }) => {
     await expect(component).toContainText('Link 2');
     await expect(component).toContainText('Link 3');
     await expect(component).toContainText('Link 4');
-    await expect(component).toContainText('Link 5');
     await expect(component).toContainText('extra');
 
-    await delay(300);
+    await delay(100);
 
-    await expect(page).toHaveScreenshot();
     const openBurgerMenuButtonIsHidden = await component.getByRole('button').isHidden();
-    expect(openBurgerMenuButtonIsHidden).toBe(true);
+    expect(openBurgerMenuButtonIsHidden).toBe(false);
 });

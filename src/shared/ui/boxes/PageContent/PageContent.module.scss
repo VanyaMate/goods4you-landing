@@ -1,9 +1,14 @@
 .container {
-    max-width : 1200px;
+    max-width : calc(var(--page-width) + var(--offset-medium));
     margin    : 0 auto;
 
     .content {
-        width  : 100%;
-        margin : 0 var(--offset-medium);
+        @media screen and (max-width : 450px) {
+            margin : 0 var(--offset-small);
+        }
+
+        max-width  : 100%;
+        margin     : 0 var(--offset-medium);
+        transition : var(--transition-fast);
     }
 }

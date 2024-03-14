@@ -1,71 +1,74 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React from 'react';
 import css from './MenuWithBurger.module.scss';
 import { cn } from '@vanyamate/helpers';
+import {
+    useMenuBurgerType,
+} from '@/shared/ui/boxes/MenuWithBurger/hooks/useMenuBurgerType.ts';
+import BurgerMenu from '@/shared/ui/boxes/BurgerMenu/BurgerMenu.tsx';
+import Link from '@/shared/ui/links/Link/Link.tsx';
+import Button from '@/shared/ui/buttons/Button/Button.tsx';
+import Text from '@/shared/ui/typography/Text/Text.tsx';
 
+
+export type MenuWithBurgerLinkItem = {
+    text: string;
+    href: string;
+}
 
 export type MenuWithBurgerProps = {
     siteLogo: React.ReactNode;
-    items: React.ReactNode[];
+    items?: MenuWithBurgerLinkItem[];
+    extra?: React.ReactNode;
 };
 
 const MenuWithBurger: React.FC<MenuWithBurgerProps> = (props) => {
-    const { siteLogo, items }       = props;
-    const container                 = useRef<HTMLElement>(null);
-    const logo                      = useRef<HTMLDivElement>(null);
-    const list                      = useRef<HTMLUListElement>(null);
-    const updateState               = useRef<ReturnType<typeof setTimeout> | null>(null);
-    const [ burger, setBurger ]     = useState<boolean>(false);
-    const [ showMenu, setShowMenu ] = useState<boolean>(false);
-
-    const isWidthForBurger = useCallback(() => {
-        const containerWidth: number = container.current?.scrollWidth ?? 0;
-        const logoWidth: number      = logo.current?.scrollWidth ?? 0;
-        const listWidth: number      = list.current?.scrollWidth ?? 0;
-
-        const availableSpaceForList: number = containerWidth - logoWidth - 40;
-        const listNotFist: boolean          = availableSpaceForList - listWidth <= 0;
-
-        return listNotFist;
-    }, []);
-
-    const initUpdate = useCallback((delay: number) => {
-        updateState.current = setTimeout(() => {
-            setBurger(isWidthForBurger());
-            setShowMenu(true);
-            updateState.current = null;
-        }, delay);
-    }, [ isWidthForBurger ]);
-
-    useEffect(() => {
-        initUpdate(0);
-
-        const onResizeHandler = function () {
-            if (!updateState.current) {
-                initUpdate(200);
-            }
-        };
-
-        window.addEventListener('resize', onResizeHandler);
-        return () => window.removeEventListener('resize', onResizeHandler);
-    }, [ initUpdate, items, siteLogo, logo, container, list ]);
+    const { siteLogo, items, extra } = props;
+    const {
+              container,
+              isBurger,
+              list,
+              showMenu,
+              logo,
+              burgerOpened,
+              closeBurger,
+              openBurger,
+          }                          = useMenuBurgerType();
 
     return (
         <nav className={ css.container } ref={ container } role="navigation">
             <div ref={ logo }>
                 { siteLogo }
             </div>
-            <ul className={ cn(css.list, (burger || !showMenu) && css.hidden) }
+            <ul className={ cn(css.list, (isBurger || !showMenu) && css.hidden) }
                 ref={ list }>
                 {
-                    items.map((item, index) => (
+                    items ? items.map((item, index) => (
                         <li key={ index }>
-                            { item }
+                            <Link href={ item.href }>{ item.text }</Link>
                         </li>
-                    ))
+                    )) : null
+                }
+                {
+                    extra ? <li>{ extra }</li> : null
                 }
             </ul>
             {
-                (burger && showMenu) ? <button type="button">[-]</button> : null
+                (isBurger && showMenu) ? <>
+                    <BurgerMenu
+                        closeBurger={ closeBurger }
+                        extra={ extra }
+                        hidden={ !burgerOpened }
+                        items={ items }
+                    />
+                    <Button
+                        aria-label="open navigation menu"
+                        onClick={ openBurger }
+                        quad
+                        type="button"
+                    >
+                        <Text size="large">=</Text>
+                    </Button>
+                </> : null
             }
         </nav>
     );

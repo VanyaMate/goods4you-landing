@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Button from '@/shared/ui/buttons/Button/Button.tsx';
 import { expect } from 'vitest';
-import css from '@/shared/ui/buttons/Button/Button.module.scss';
 import React from 'react';
 
 
@@ -12,18 +11,17 @@ export default () => {
             <Button styleType="primary">Main</Button>
             <Button styleType="second">Second</Button>
             <Button styleType="light">Light</Button>
-            <Button styleType="danger">Danger</Button>
+            <Button styleType="border">Border</Button>
         </>,
     );
-    const defaultButton: HTMLElement = screen.getByText('Default');
-    const mainButton: HTMLElement    = screen.getByText('Main');
-    const secondButton: HTMLElement  = screen.getByText('Second');
-    const lightButton: HTMLElement   = screen.getByText('Light');
-    const dangerButton: HTMLElement  = screen.getByText('Danger');
+    screen.getByText('Default');
+    const mainButton: HTMLElement   = screen.getByText('Main');
+    const secondButton: HTMLElement = screen.getByText('Second');
+    const lightButton: HTMLElement  = screen.getByText('Light');
+    const borderButton: HTMLElement = screen.getByText('Border');
 
-    expect(defaultButton.classList.contains(css.primary)).toBe(true);
-    expect(mainButton.classList.contains(css.primary)).toBe(true);
-    expect(secondButton.classList.contains(css.second)).toBe(true);
-    expect(lightButton.classList.contains(css.light)).toBe(true);
-    expect(dangerButton.classList.contains(css.danger)).toBe(true);
+    expect(mainButton.classList.contains('button_primary')).toBe(true);
+    expect(secondButton.classList.contains('button_second')).toBe(true);
+    expect(lightButton.classList.contains('button_light')).toBe(true);
+    expect(borderButton.classList.contains('button_border')).toBe(true);
 }

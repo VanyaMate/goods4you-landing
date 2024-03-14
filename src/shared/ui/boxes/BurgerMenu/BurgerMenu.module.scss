@@ -1,0 +1,36 @@
+.container {
+    position       : fixed;
+    top            : 0;
+    left           : 0;
+    box-sizing     : border-box;
+    width          : 100dvw;
+    height         : 100dvh;
+    overflow       : hidden;
+    display        : flex;
+    flex-direction : column;
+    gap            : var(--offset-medium);
+    padding        : var(--offset-small);
+    transition     : opacity .2s, visibility .2s;
+    opacity        : 1;
+    background     : rgba(0, 0, 0, .9);
+
+    &.hidden {
+        opacity    : 0;
+        visibility : hidden;
+    }
+
+    .content {
+        display        : flex;
+        flex-direction : column;
+        gap            : var(--offset-medium);
+        overflow       : auto;
+        padding        : var(--offset-small);
+    }
+
+    .list {
+        list-style-type : none;
+        display         : flex;
+        flex-direction  : column;
+        gap             : var(--offset-small);
+    }
+}

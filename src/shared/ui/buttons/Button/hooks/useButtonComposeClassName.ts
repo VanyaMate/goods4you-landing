@@ -4,14 +4,16 @@ import { cn } from '@vanyamate/helpers/react/classname';
 import css from '@/shared/ui/buttons/Button/Button.module.scss';
 
 
-export const useButtonComposeClassName = function (className?: string, styleType?: ButtonStyleType, loading?: boolean): string {
+export const useButtonComposeClassName = function (className?: string, styleType?: ButtonStyleType, loading?: boolean, quad?: boolean): string {
     return useMemo(() => cn(
         className,
         css.container,
-        (styleType === undefined || styleType === 'primary') && css.primary,
-        styleType === 'second' && css.second,
-        styleType === 'light' && css.light,
-        styleType === 'danger' && css.danger,
+        'button',
+        styleType === 'primary' && 'button_primary',
+        styleType === 'second' && 'button_second',
+        styleType === 'light' && 'button_light',
+        styleType === 'border' && 'button_border',
+        quad && 'button_quad',
         loading && css.loading,
-    ), [ className, styleType, loading ]);
+    ), [ className, styleType, quad, loading ]);
 };

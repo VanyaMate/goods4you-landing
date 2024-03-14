@@ -8,7 +8,7 @@ export type ButtonStyleType =
     'primary'
     | 'second'
     | 'light'
-    | 'danger';
+    | 'border';
 
 export type ButtonOnClickSync = (event: React.MouseEvent<HTMLButtonElement>, data?: any) => void;
 export type ButtonOnClickAsync = (event: React.MouseEvent<HTMLButtonElement>, data?: any) => Promise<void>;
@@ -19,13 +19,23 @@ export type ButtonProps =
         onClickAsync?: ButtonOnClickAsync;
         data?: any;
         styleType?: ButtonStyleType;
+        quad?: boolean;
     }
     & Omit<React.ComponentPropsWithoutRef<'button'>, 'onClick'>;
 
 const Button: React.FC<ButtonProps> = (props) => {
-    const { onClick, onClickAsync, data, styleType, className, type, ...other } = props;
-    const [ loading, setLoading ]                                               = useState<boolean>(false);
-    const composedClassName: string                                             = useButtonComposeClassName(className, styleType, loading);
+    const {
+              onClick,
+              onClickAsync,
+              data,
+              styleType,
+              className,
+              type,
+              quad,
+              ...other
+          }                         = props;
+    const [ loading, setLoading ]   = useState<boolean>(false);
+    const composedClassName: string = useButtonComposeClassName(className, styleType, loading, quad);
 
     const onClickHandler: React.MouseEventHandler<HTMLButtonElement> = function (event) {
         if (onClick) {
