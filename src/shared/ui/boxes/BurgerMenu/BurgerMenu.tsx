@@ -8,6 +8,7 @@ import {
 import Link from '@/shared/ui/links/Link/Link.tsx';
 import Text from '@/shared/ui/typography/Text/Text.tsx';
 import Button from '@/shared/ui/buttons/Button/Button.tsx';
+import IconM from '@/shared/ui/icons/IconM/IconM.tsx';
 
 
 export type BurgerMenuProps = {
@@ -24,19 +25,20 @@ const BurgerMenu: React.FC<BurgerMenuProps> = (props) => {
         <nav className={ cn(css.container, hidden && css.hidden) }>
             <Button
                 aria-label="close menu"
+                className={ css.closeButton }
                 onClick={ closeBurger }
                 quad
                 styleType="light"
                 type="button"
             >
-                <Text color="inversion" inline size="large">X</Text>
+                <IconM size="large">close</IconM>
             </Button>
             <div className={ css.content }>
                 <ul className={ css.list }>
                     {
                         items ? items.map((item, index) => (
                             <li key={ index }>
-                                <Text color="inversion" inline size="large">
+                                <Text inline size="large">
                                     <Link href={ item.href }
                                           onClick={ closeBurger }>
                                         { item.text }

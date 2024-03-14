@@ -4,16 +4,18 @@
     $buttonBorderWidth       : 1px;
 
     .button {
-        display       : block;
-        width         : fit-content;
-        padding       : $buttonPaddingHorizontal $buttonPaddingVertical;
-        border-radius : var(--border-radius);
-        cursor        : pointer;
-        outline       : none;
-        border        : 2px solid transparent;
-        transition    : var(--transition-fast);
-        background    : inherit;
-        color         : inherit;
+        display         : flex;
+        align-items     : center;
+        justify-content : center;
+        width           : fit-content;
+        padding         : $buttonPaddingHorizontal $buttonPaddingVertical;
+        border-radius   : var(--border-radius);
+        cursor          : pointer;
+        outline         : none;
+        border          : 2px solid transparent;
+        transition      : var(--transition-fast);
+        background      : inherit;
+        color           : inherit;
 
         &:hover {
             background : var(--background-main);

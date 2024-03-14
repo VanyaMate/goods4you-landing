@@ -7,7 +7,7 @@ import {
 import BurgerMenu from '@/shared/ui/boxes/BurgerMenu/BurgerMenu.tsx';
 import Link from '@/shared/ui/links/Link/Link.tsx';
 import Button from '@/shared/ui/buttons/Button/Button.tsx';
-import Text from '@/shared/ui/typography/Text/Text.tsx';
+import IconM from '@/shared/ui/icons/IconM/IconM.tsx';
 
 
 export type MenuWithBurgerLinkItem = {
@@ -15,14 +15,17 @@ export type MenuWithBurgerLinkItem = {
     href: string;
 }
 
-export type MenuWithBurgerProps = {
-    siteLogo: React.ReactNode;
-    items?: MenuWithBurgerLinkItem[];
-    extra?: React.ReactNode;
-};
+export type MenuWithBurgerProps =
+    {
+        siteLogo: React.ReactNode;
+        items?: MenuWithBurgerLinkItem[];
+        extra?: React.ReactNode;
+    }
+    // TODO: Возможно лучше вынести ref и role (Omit)
+    & React.ComponentPropsWithoutRef<'div'>;
 
 const MenuWithBurger: React.FC<MenuWithBurgerProps> = (props) => {
-    const { siteLogo, items, extra } = props;
+    const { siteLogo, items, extra, className, ...other } = props;
     const {
               container,
               isBurger,
@@ -32,10 +35,11 @@ const MenuWithBurger: React.FC<MenuWithBurgerProps> = (props) => {
               burgerOpened,
               closeBurger,
               openBurger,
-          }                          = useMenuBurgerType();
+          }                                               = useMenuBurgerType();
 
     return (
-        <nav className={ css.container } ref={ container } role="navigation">
+        <nav className={ cn(css.container, className) } ref={ container }
+             role="navigation" { ...other }>
             <div ref={ logo }>
                 { siteLogo }
             </div>
@@ -43,7 +47,7 @@ const MenuWithBurger: React.FC<MenuWithBurgerProps> = (props) => {
                 ref={ list }>
                 {
                     items ? items.map((item, index) => (
-                        <li key={ index }>
+                        <li className={ css.item } key={ index }>
                             <Link href={ item.href }>{ item.text }</Link>
                         </li>
                     )) : null
@@ -53,7 +57,8 @@ const MenuWithBurger: React.FC<MenuWithBurgerProps> = (props) => {
                 }
             </ul>
             {
-                (isBurger && showMenu) ? <>
+                (isBurger && showMenu)
+                ? <>
                     <BurgerMenu
                         closeBurger={ closeBurger }
                         extra={ extra }
@@ -66,9 +71,10 @@ const MenuWithBurger: React.FC<MenuWithBurgerProps> = (props) => {
                         quad
                         type="button"
                     >
-                        <Text size="large">=</Text>
+                        <IconM size="large">menu</IconM>
                     </Button>
-                </> : null
+                </>
+                : null
             }
         </nav>
     );

@@ -5,9 +5,11 @@
 @import "offset/offset.default.module";
 @import "a11y/a11y.default.module";
 @import "transition/transition.default.module";
+@import "animations/animations.default.module";
 
 // Components
 @import "components/button/button.default.module";
+@import "components/hr/hr.default.module";
 
 * {
     margin      : 0;
