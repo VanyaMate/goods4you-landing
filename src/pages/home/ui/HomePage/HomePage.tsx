@@ -60,8 +60,10 @@ const HomePage: React.FC<HomePageProps> = (props) => {
                     },
                 ] }
             />
-            <CatalogPageContent id="catalog"/>
-            <AboutUsPageContent id="about_us"/>
+            <main>
+                <CatalogPageContent id="catalog"/>
+                <AboutUsPageContent id="about_us"/>
+            </main>
         </>
     );
 };

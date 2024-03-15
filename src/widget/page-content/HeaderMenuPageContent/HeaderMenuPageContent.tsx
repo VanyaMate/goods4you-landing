@@ -25,7 +25,7 @@ const HeaderMenuPageContent: React.FC<HeaderMenuPageContentProps> = (props) => {
                     items={ items }
                     siteLogo={
                         <Title level={ 1 }>
-                            <Link aria-label="home page" href="/">
+                            <Link aria-label="home page" aria-level={ 1 } href="/">
                                 Goods4you
                             </Link>
                         </Title>
