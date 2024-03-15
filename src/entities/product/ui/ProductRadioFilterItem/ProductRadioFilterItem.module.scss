@@ -1,0 +1,35 @@
+.container {
+    display        : flex;
+    flex-direction : column;
+    gap            : var(--offset-small);
+
+    .list {
+        display   : flex;
+        flex-wrap : wrap;
+
+        .button {
+            outline         : none;
+            border          : none;
+            cursor          : pointer;
+
+            display         : flex;
+            align-items     : center;
+            justify-content : center;
+            width           : 50%;
+            border-radius   : 0 !important;
+            border-bottom   : 1px solid var(--beige) !important;
+            border-right    : 1px solid var(--beige) !important;
+            background      : var(--background-light);
+            padding         : 28px 4px 24px;
+
+            &:nth-child(1),
+            &:nth-child(2) {
+                border-top : 1px solid var(--beige) !important;
+            }
+
+            &:nth-child(2n - 1) {
+                border-left : 1px solid var(--beige) !important;
+            }
+        }
+    }
+}

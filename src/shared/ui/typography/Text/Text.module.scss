@@ -30,4 +30,11 @@
     &.large_size {
         font-size : var(--font-size-large);
     }
+
+    &.lines {
+        display            : -webkit-box;
+        -webkit-box-orient : vertical;
+        text-overflow      : ellipsis;
+        overflow           : hidden;
+    }
 }

@@ -4,7 +4,7 @@ import css from '../Text.module.scss';
 import { cn } from '@vanyamate/helpers/react/classname.ts';
 
 
-export const useTextComposeClassName = function (className?: string, size?: TextSize, color?: TextColor) {
+export const useTextComposeClassName = function (className?: string, size?: TextSize, color?: TextColor, lines?: number) {
     return useMemo(() => cn(
         css.container,
         className,
@@ -16,5 +16,6 @@ export const useTextComposeClassName = function (className?: string, size?: Text
         color === 'link' && css.link_color,
         color === 'danger' && css.danger_color,
         color === 'light' && css.light_color,
-    ), [ size, className, color ]);
+        lines !== undefined ? css.lines : false,
+    ), [ className, size, color, lines ]);
 };

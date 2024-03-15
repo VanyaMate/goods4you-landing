@@ -25,6 +25,7 @@ export const useMenuBurgerType = function (): UseMenuBurgerType {
 
     const openBurger = useCallback(() => {
         const root = document.querySelector('#root');
+        document.body.classList.add('block-scroll');
         if (root) {
             root.setAttribute('inert', '');
         }
@@ -35,6 +36,7 @@ export const useMenuBurgerType = function (): UseMenuBurgerType {
 
     const closeBurger = useCallback(() => {
         const root = document.querySelector('#root');
+        document.body.classList.remove('block-scroll');
         if (root) {
             root.removeAttribute('inert');
         }

@@ -1,14 +1,34 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useFetchProducts } from '@/entities/product/hooks/useFetchProducts.ts';
 import { FakeStoreApiProduct, Product } from '@/types/product/product.types.ts';
-import ProductCard from '@/entities/product/ui/ProductCard/ProductCard.tsx';
 import { fakeStoreProductMapper } from '@/shared/mapper/fakeStoreProductMapper.ts';
+import ProductFilter, {
+    ProductFilters,
+} from '@/entities/product/ui/ProductFilter/ProductFilter.tsx';
+import css from './ProductCatalogWithFilters.module.scss';
+import ProductTileList from '@/entities/product/ui/ProductTileList/ProductTileList.tsx';
 
 
 export type ProductCatalogWithFiltersProps = {};
 
 const ProductCatalogWithFilters: React.FC<ProductCatalogWithFiltersProps> = (props) => {
     const {} = props;
+
+    /**
+     * get filters from url
+     *
+     * make query to /api
+     * get filters
+     * get products
+     * set filters
+     * set products
+     *
+     * - pending (fetch)
+     * - products
+     * - filters
+     * - error
+     * - setFilters
+     */
 
     const {
               pending,
@@ -18,18 +38,32 @@ const ProductCatalogWithFilters: React.FC<ProductCatalogWithFiltersProps> = (pro
               error,
           } = useFetchProducts<Product, FakeStoreApiProduct>('https://fakestoreapi.com/products', {}, fakeStoreProductMapper);
 
+    // Mock filters
+    const filters: ProductFilters = useMemo(() => (
+        {
+            Category: {
+                type   : 'radio',
+                onApply: setOptions,
+                items  : {
+                    'smartphones': 'false',
+                    'laptops'    : 'false',
+                    'sneakers'   : 'false',
+                },
+            },
+        }
+    ), [ setOptions ]);
+
     return (
-        <div>
-            <h1>Filters</h1>
-            <div style={ {
-                display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 20,
-            } }>
-                {
-                    products.map((product) => (
-                        <ProductCard key={ product.id } product={ product }/>
-                    ))
-                }
-            </div>
+        <div className={ css.container }>
+            <ProductFilter
+                filters={ filters }
+                onApply={ (filter) => {
+                    console.log(filter);
+                } }
+                onReset={ () => {
+                } }
+            />
+            <ProductTileList products={ products }/>
         </div>
     );
 };

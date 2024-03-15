@@ -4,10 +4,10 @@
     $buttonBorderWidth       : 1px;
 
     .button {
-        display         : flex;
+        display         : inline-flex;
         align-items     : center;
         justify-content : center;
-        width           : fit-content;
+        // width           : fit-content;
         padding         : $buttonPaddingHorizontal $buttonPaddingVertical;
         border-radius   : var(--border-radius);
         cursor          : pointer;
@@ -55,8 +55,8 @@
         &_light {
             &:hover,
             &:focus {
-                box-shadow : 0 0 0 2px var(--background-light);
-                background : rgba(255, 255, 255, .1);
+                box-shadow : 0 0 0 2px var(--background-light), 0 0 0 4px var(--background-second);
+                background : rgba(255, 255, 255, .3);
                 color      : inherit;
             }
         }

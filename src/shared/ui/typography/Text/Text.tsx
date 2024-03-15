@@ -21,17 +21,26 @@ export type TextProps =
         inline?: boolean;
         color?: TextColor;
         size?: TextSize;
+        lines?: number;
     }
     & React.ComponentPropsWithoutRef<'p'>;
 
 const Text: React.FC<TextProps> = (props) => {
-    const { inline, size, color, className, ...other } = props;
-    const composedClassName: string                    = useTextComposeClassName(className, size, color);
+    const { inline, size, color, className, lines, style, ...other } = props;
+    const composedClassName: string                                  = useTextComposeClassName(className, size, color, lines);
 
     return (
         inline
-        ? <span { ...other } className={ composedClassName }/>
-        : <p { ...other } className={ composedClassName }/>
+        ? <span
+            { ...other }
+            className={ composedClassName }
+            style={ { ...style, WebkitLineClamp: lines ?? '' } }
+        />
+        : <p
+            { ...other }
+            className={ composedClassName }
+            style={ { ...style, WebkitLineClamp: lines ?? '' } }
+        />
     );
 };
 

@@ -28,7 +28,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
                         src={ product.imageUrl }
                     />
                 </Link>
-                <Title className={ css.title } level={ 4 }>
+                <Title className={ css.title } level={ 4 } lines={ 3 }>
                     <Link href={ `/#product/${ product.id }` }>
                         <Text inline>{ product.title }</Text>
                     </Link>

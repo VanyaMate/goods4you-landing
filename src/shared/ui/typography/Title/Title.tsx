@@ -14,15 +14,24 @@ export type TitleLevel =
 export type TitleProps =
     {
         level: TitleLevel;
+        lines?: number;
     }
     & React.ComponentPropsWithoutRef<'h1'>;
 
 const Title: React.FC<TitleProps> = (props) => {
-    const { level, className, ...other } = props;
-    const compositeClassName             = cn(className, css.container);
-    const HeadingTag                     = `h${ level }` as keyof Pick<JSX.IntrinsicElements, 'h1'>;
+    const { level, className, style, lines, ...other } = props;
+    const compositeClassName                           = cn(
+        className,
+        css.container,
+        lines !== undefined ? css.lines : null,
+    );
+    const HeadingTag                                   = `h${ level }` as keyof Pick<JSX.IntrinsicElements, 'h1'>;
 
-    return <HeadingTag { ...other } className={ compositeClassName }/>;
+    return <HeadingTag
+        { ...other }
+        className={ compositeClassName }
+        style={ { ...style, WebkitLineClamp: lines ?? '' } }
+    />;
 };
 
 export default React.memo(Title);
