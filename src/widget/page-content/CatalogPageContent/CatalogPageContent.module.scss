@@ -1,0 +1,7 @@
+.container {
+    .pageContent {
+        display        : flex;
+        flex-direction : column;
+        gap            : var(--offset-medium);
+    }
+}

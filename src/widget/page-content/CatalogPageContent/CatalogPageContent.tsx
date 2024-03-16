@@ -5,6 +5,7 @@ import Title from '@/shared/ui/typography/Title/Title.tsx';
 import { cn } from '@vanyamate/helpers/react/classname';
 import ProductCatalogWithFilters
     from '@/widget/product-search/ProductCatalogWithFilters/ProductCatalogWithFilters';
+import css from './CatalogPageContent.module.scss';
 
 
 export type CatalogPageContentProps =
@@ -16,9 +17,9 @@ const CatalogPageContent: React.FC<CatalogPageContentProps> = (props) => {
 
     return (
         <ColorContent { ...other }
-                      className={ cn(className) }
+                      className={ cn(className, css.container) }
                       color="main">
-            <PageContent withPaddings>
+            <PageContent className={ css.pageContent } withPaddings>
                 <Title level={ 2 }>Catalog</Title>
                 <ProductCatalogWithFilters/>
             </PageContent>
