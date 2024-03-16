@@ -6,13 +6,14 @@ import { cn } from '@vanyamate/helpers/react/classname';
 export type ImageProps =
     {
         quad?: boolean;
+        maxSize?: boolean;
     }
     & React.ComponentPropsWithoutRef<'img'>;
 
 const Image: React.FC<ImageProps> = (props) => {
-    const { quad, className, alt, src, ...other } = props;
-    const [ loading, setLoading ]                 = useState<boolean>(true);
-    const image                                   = useRef<HTMLImageElement>(null);
+    const { quad, className, alt, src, maxSize, ...other } = props;
+    const [ loading, setLoading ]                          = useState<boolean>(true);
+    const image                                            = useRef<HTMLImageElement>(null);
 
     useEffect(() => {
         const imageCache    = image.current;
@@ -30,7 +31,7 @@ const Image: React.FC<ImageProps> = (props) => {
             <img
                 { ...other }
                 alt={ alt ?? '' }
-                className={ css.image }
+                className={ cn(css.image, maxSize && css.maxSize) }
                 ref={ image }
                 src={ src }
             />

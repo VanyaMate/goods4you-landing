@@ -5,6 +5,8 @@ import Button from '@/shared/ui/buttons/Button/Button.tsx';
 import { cn } from '@vanyamate/helpers/react/classname';
 import css from './Questionnaier.module.scss';
 import Checkbox from '@/shared/ui/inputs/Checkbox/Checkbox.tsx';
+import QuestionnaireAnswersBox
+    from '@/entities/content/ui/Questionnaire/ui/QuestionnaireAnswersBox/QuestionnaireAnswersBox.tsx';
 
 
 export type QuestionAnswerType =
@@ -42,21 +44,7 @@ const Questionnaire: React.FC<QuestionnaireProps> = (props) => {
                       color="second"
                       size="medium">{ description }</Text>
             </header>
-            <section className={ css.content }>
-                <Title level={ 3 }>{ questions[questionPage].question }</Title>
-                <div>
-                    {
-                        questions[questionPage].answers.map((answer, index) =>
-                            <Checkbox
-                                defaultChecked={ answer.value === 'true' ? true : false }
-                                key={ questionPage + '-' + index }
-                                label={ answer.label }
-                                type="checkbox"
-                            />,
-                        )
-                    }
-                </div>
-            </section>
+            <QuestionnaireAnswersBox { ...questions[questionPage] }/>
             <footer className={ css.footer }>
                 <Text className={ css.page } color="second" size="medium">
                     { questionPage + 1 } of { questions.length }

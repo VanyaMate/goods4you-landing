@@ -17,7 +17,7 @@ const ProductCatalogWithFilters: React.FC<ProductCatalogWithFiltersProps> = (pro
     /**
      * get filters from url
      *
-     * make query to /api
+     * make query to /api by filters
      * get filters
      * get products
      * set filters
@@ -27,7 +27,11 @@ const ProductCatalogWithFilters: React.FC<ProductCatalogWithFiltersProps> = (pro
      * - products
      * - filters
      * - error
-     * - setFilters
+     * - setFilters ->
+     *      - update url
+     *      - update filters
+     *          - set filters
+     *          - set products
      */
 
     const {

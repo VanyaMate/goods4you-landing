@@ -30,12 +30,20 @@
         }
 
         .image {
-            position   : absolute;
-            top        : 50%;
-            left       : 50%;
-            transform  : translate(-50%, -50%);
-            max-width  : 100%;
-            max-height : 100%;
+            position  : absolute;
+            top       : 50%;
+            left      : 50%;
+            transform : translate(-50%, -50%);
+
+            &:not(.maxSize) {
+                max-width  : 100%;
+                max-height : 100%;
+            }
+
+            &.maxSize {
+                min-width  : 100%;
+                min-height : 100%;
+            }
         }
     }
 }

@@ -1,28 +1,29 @@
 :root body.palette-default-light {
-    background                 : var(--background-main);
-    color                      : var(--color-main);
+    background           : var(--background-main);
+    color                : var(--color-main);
 
     // Simple colors
-    --white                    : #FFF;
-    --light-beige              : #FFF4EE;
-    --beige                    : #DBBBA9;
-    --light-gray               : #B2B5BB;
-    --gray                     : #808080;
-    --dark-gray                : #444B58;
-    --black                    : #000;
-    --purple                   : #484283;
-    --red                      : #F14F4F;
-    --red-lighten              : #EC3F3F;
+    --white              : #FFF;
+    --light-beige        : #FFF4EE;
+    --beige              : #DBBBA9;
+    --light-gray         : #B2B5BB;
+    --gray               : #808080;
+    --dark-gray          : #444B58;
+    --black              : #000;
+    --black-transparent  : #24242488;
+    --purple             : #484283;
+    --red                : #F14F4F;
+    --red-lighten        : #EC3F3F;
 
     // Entity colors
-    --background-main          : var(--white);
-    --background-second        : var(--dark-gray);
-    --background-light         : var(--light-beige);
-    --background-mark          : var(--purple);
-    --background-primary       : var(--red);
+    --background-main    : var(--white);
+    --background-second  : var(--dark-gray);
+    --background-light   : var(--light-beige);
+    --background-mark    : var(--purple);
+    --background-primary : var(--red);
 
-    --color-main               : var(--dark-gray);
-    --color-invert             : var(--white);
-    --color-second             : var(--gray);
-    --color-light              : var(--light-gray);
+    --color-main         : var(--dark-gray);
+    --color-invert       : var(--white);
+    --color-second       : var(--gray);
+    --color-light        : var(--light-gray);
 }

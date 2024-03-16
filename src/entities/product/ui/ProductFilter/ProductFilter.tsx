@@ -4,6 +4,7 @@ import Button from '@/shared/ui/buttons/Button/Button.tsx';
 import css from './ProductFilter.module.scss';
 import ProductRadioFilterItem
     from '@/entities/product/ui/ProductRadioFilterItem/ProductRadioFilterItem.tsx';
+import ColorContent from '@/shared/ui/boxes/ColorContent/ColorContent.tsx';
 
 
 export type ProductFilterType =
@@ -37,48 +38,50 @@ const ProductFilter: React.FC<ProductFilterProps> = (props) => {
     }, [ localFilters ]);
 
     return (
-        <section className={ css.container }>
-            <Title level={ 3 }>Selection by parameters</Title>
-            {
-                Object.entries(localFilters.current).map(([ title, filter ]) => {
-                    switch (filter.type) {
-                        case 'text':
-                            return 'Input';
-                        case 'radio':
-                            return <ProductRadioFilterItem
-                                items={ filter.items }
-                                key={ title }
-                                onChange={ onLocalFilterChange }
-                                title={ title }
-                            />;
-                        case 'checkbox':
-                            return 'Checkbox';
-                        case 'number':
-                            return 'Number';
-                        default:
-                            return null;
-                    }
-                })
-            }
-            <div className={ css.buttons }>
-                <Button
-                    className={ css.button }
-                    onClick={ () => onApply(localFilters.current) }
-                    styleType="second"
-                    type="button"
-                >
-                    Apply
-                </Button>
-                <Button
-                    className={ css.button }
-                    onClick={ onReset }
-                    styleType="light"
-                    type="button"
-                >
-                    Reset
-                </Button>
-            </div>
-        </section>
+        <ColorContent className={ css.container } color="light">
+            <section className={ css.content }>
+                <Title level={ 3 }>Selection by parameters</Title>
+                {
+                    Object.entries(localFilters.current).map(([ title, filter ]) => {
+                        switch (filter.type) {
+                            case 'text':
+                                return 'Input';
+                            case 'radio':
+                                return <ProductRadioFilterItem
+                                    items={ filter.items }
+                                    key={ title }
+                                    onChange={ onLocalFilterChange }
+                                    title={ title }
+                                />;
+                            case 'checkbox':
+                                return 'Checkbox';
+                            case 'number':
+                                return 'Number';
+                            default:
+                                return null;
+                        }
+                    })
+                }
+                <div className={ css.buttons }>
+                    <Button
+                        className={ css.button }
+                        onClick={ () => onApply(localFilters.current) }
+                        styleType="second"
+                        type="button"
+                    >
+                        Apply
+                    </Button>
+                    <Button
+                        className={ css.button }
+                        onClick={ onReset }
+                        styleType="light"
+                        type="button"
+                    >
+                        Reset
+                    </Button>
+                </div>
+            </section>
+        </ColorContent>
     );
 };
 

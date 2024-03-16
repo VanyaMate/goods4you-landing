@@ -1,9 +1,17 @@
 .container {
     min-height : 580px;
 
+    @media screen and (max-width : 450px) {
+        min-height : 100px;
+    }
+
     .content {
         padding-top    : 222px;
         padding-bottom : 150px;
+
+        @media screen and (max-width : 450px) {
+            padding : var(--offset-large) 0;
+        }
     }
 
     .quote {

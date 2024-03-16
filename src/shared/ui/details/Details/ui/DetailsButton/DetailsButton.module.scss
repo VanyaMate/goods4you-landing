@@ -1,0 +1,22 @@
+.container {
+    display         : flex;
+    align-items     : center;
+    justify-content : space-between;
+    width           : 100%;
+    padding         : var(--offset-medium) 0;
+    font-size       : inherit;
+    font-weight     : inherit;
+    color           : inherit;
+    background      : inherit;
+
+    .icon {
+        transition : var(--transition-fast);
+        transform  : rotate(45deg);
+    }
+
+    &.active {
+        .icon {
+            transform : rotate(0deg);
+        }
+    }
+}

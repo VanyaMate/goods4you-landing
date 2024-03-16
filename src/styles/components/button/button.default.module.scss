@@ -4,18 +4,19 @@
     $buttonBorderWidth       : 1px;
 
     .button {
-        display         : inline-flex;
-        align-items     : center;
-        justify-content : center;
-        // width           : fit-content;
-        padding         : $buttonPaddingHorizontal $buttonPaddingVertical;
-        border-radius   : var(--border-radius);
-        cursor          : pointer;
-        outline         : none;
-        border          : 2px solid transparent;
-        transition      : var(--transition-fast);
-        background      : inherit;
-        color           : inherit;
+        cursor     : pointer;
+        outline    : none;
+        border     : 2px solid transparent;
+        transition : var(--transition-fast);
+
+        &:not(&_clear) {
+            display         : inline-flex;
+            align-items     : center;
+            justify-content : center;
+            // width           : fit-content;
+            border-radius   : var(--border-radius);
+            padding         : $buttonPaddingHorizontal $buttonPaddingVertical;
+        }
 
         &:hover {
             background : var(--background-main);
@@ -69,7 +70,7 @@
 
             &:hover,
             &:focus {
-                box-shadow : 0 0 0 2px var(--background-main);
+                box-shadow : 0 0 0 2px var(--background-main), 0 0 0 4px var(--background-second);
                 background : var(--background-light);
             }
         }
