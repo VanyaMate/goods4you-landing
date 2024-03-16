@@ -16,6 +16,7 @@ export const useTextComposeClassName = function (className?: string, size?: Text
         color === 'link' && css.link_color,
         color === 'danger' && css.danger_color,
         color === 'light' && css.light_color,
+        color === 'second' && css.second_color,
         lines !== undefined ? css.lines : false,
     ), [ className, size, color, lines ]);
 };

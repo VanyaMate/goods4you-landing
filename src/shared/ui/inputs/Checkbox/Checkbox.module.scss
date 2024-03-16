@@ -1,0 +1,18 @@
+.container {
+    display     : inline-flex;
+    gap         : var(--offset-small);
+    align-items : center;
+
+    .input {
+        width         : 24px;
+        height        : 24px;
+        border-radius : var(--offset-extra-small);
+        border        : 1px solid var(--beige);
+        cursor        : pointer;
+    }
+
+    .label {
+        font-weight : 600;
+        cursor      : pointer;
+    }
+}

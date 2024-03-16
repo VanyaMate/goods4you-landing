@@ -13,10 +13,10 @@ const PageContent: React.FC<PageContentProps> = (props) => {
     const { className, withPaddings, ...other } = props;
 
     return (
-        <section className={ css.container }>
+        <div className={ css.container }>
             <div { ...other }
                  className={ cn(css.content, className, withPaddings && css.paddings) }/>
-        </section>
+        </div>
     );
 };
 

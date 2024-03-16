@@ -9,7 +9,8 @@ export type TextColor =
     | 'inversion'
     | 'link'
     | 'danger'
-    | 'light';
+    | 'light'
+    | 'second';
 
 export type TextSize =
     'small'

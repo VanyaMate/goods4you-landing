@@ -19,10 +19,12 @@ const CatalogPageContent: React.FC<CatalogPageContentProps> = (props) => {
         <ColorContent { ...other }
                       className={ cn(className, css.container) }
                       color="main">
-            <PageContent className={ css.pageContent } withPaddings>
-                <Title level={ 2 }>Catalog</Title>
-                <ProductCatalogWithFilters/>
-            </PageContent>
+            <section>
+                <PageContent className={ css.pageContent } withPaddings>
+                    <Title level={ 2 }>Catalog</Title>
+                    <ProductCatalogWithFilters/>
+                </PageContent>
+            </section>
         </ColorContent>
     );
 };
