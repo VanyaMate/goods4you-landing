@@ -8,8 +8,10 @@
         outline    : none;
         border     : 2px solid transparent;
         transition : var(--transition-fast);
+        background : inherit;
+        color      : inherit;
 
-        &:not(&_clear) {
+        &:not(.button_clear) {
             display         : inline-flex;
             align-items     : center;
             justify-content : center;
@@ -18,18 +20,18 @@
             padding         : $buttonPaddingHorizontal $buttonPaddingVertical;
         }
 
-        &:hover {
+        :hover {
             background : var(--background-main);
             color      : var(--color-main);
         }
 
-        &_quad {
+        &.button_quad {
             width   : 40px;
             height  : 40px;
             padding : 0;
         }
 
-        &_primary {
+        &.button_primary {
             background : var(--background-primary);
             color      : var(--color-invert);
 
@@ -41,7 +43,7 @@
             }
         }
 
-        &_second {
+        &.button_second {
             background : var(--background-second);
             color      : var(--color-invert);
 
@@ -53,7 +55,7 @@
             }
         }
 
-        &_light {
+        &.button_light {
             &:hover,
             &:focus {
                 box-shadow : 0 0 0 2px var(--background-light), 0 0 0 4px var(--background-second);
@@ -62,7 +64,7 @@
             }
         }
 
-        &_border {
+        &.button_border {
             background : var(--background-main);
             color      : var(--color-main);
             border     : $buttonBorderWidth solid var(--color-main);
