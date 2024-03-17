@@ -4,7 +4,6 @@ import Text from '@/shared/ui/typography/Text/Text.tsx';
 import Button from '@/shared/ui/buttons/Button/Button.tsx';
 import { cn } from '@vanyamate/helpers/react/classname';
 import css from './Questionnaier.module.scss';
-import Checkbox from '@/shared/ui/inputs/Checkbox/Checkbox.tsx';
 import QuestionnaireAnswersBox
     from '@/entities/content/ui/Questionnaire/ui/QuestionnaireAnswersBox/QuestionnaireAnswersBox.tsx';
 

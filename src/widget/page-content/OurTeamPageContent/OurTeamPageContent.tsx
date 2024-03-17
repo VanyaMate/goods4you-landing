@@ -21,7 +21,7 @@ const OurTeamPageContent: React.FC<OurTeamPageContentProps> = (props) => {
             className={ cn(css.container, className) }
             color="mark"
         >
-            <PageContent withPaddings className={ css.content }>
+            <PageContent className={ css.content } withPaddings>
                 <Title level={ 2 }>Our team</Title>
                 <PhotoWithDescriptionCollage
                     items={ [

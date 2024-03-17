@@ -36,28 +36,24 @@ const Details: React.FC<DetailsProps> = (props) => {
 
     const closeDetails = useCallback(() => {
         if (content.current) {
-            onCloseInList?.();
-            content.current.style.height = `${ getInnerHeight() }px`;
-            setTimeout(() => setHeight(() => '0px'), 0);
+            const currentHeight = content.current.style.height;
+            if (currentHeight !== '0px') {
+                onCloseInList?.();
+                content.current.style.height = `${ getInnerHeight() }px`;
+                setTimeout(() => setHeight(() => '0px'), 0);
+            }
         }
-    }, [ getInnerHeight ]);
+    }, [ getInnerHeight, onCloseInList ]);
 
     const openDetails = useCallback(() => {
-        onOpenInList?.(closeDetails);
-        setHeight(() => `${ getInnerHeight() }px`);
+        if (content.current) {
+            const currentHeight = content.current.style.height;
+            if (currentHeight === '0px') {
+                onOpenInList?.(closeDetails);
+                setHeight(() => `${ getInnerHeight() }px`);
+            }
+        }
     }, [ closeDetails, getInnerHeight, onOpenInList ]);
-
-    const onClickHandler = useCallback(() => {
-        if (!content.current) {
-            return;
-        }
-        const opened = height !== '0px';
-        if (opened) {
-            closeDetails();
-        } else {
-            openDetails();
-        }
-    }, [ height ]);
 
     const onTransitionEnd = useCallback(() => {
         if (!content.current) {
@@ -69,13 +65,32 @@ const Details: React.FC<DetailsProps> = (props) => {
         }
     }, [ height ]);
 
-    useEffect(() => {
-        if (isActive && height === '0px') {
-            onClickHandler();
-        } else if (!isActive && height !== '0px') {
-            onClickHandler();
+    const onClickHandler = useCallback(() => {
+        if (!content.current) {
+            return;
         }
-    }, [ isActive ]);
+        const opened = height !== '0px';
+        if (opened) {
+            closeDetails();
+        } else {
+            openDetails();
+        }
+    }, [ height, closeDetails, openDetails ]);
+
+    const setDetailsState = useCallback((state: boolean) => {
+        if (content.current) {
+            const currentHeight = content.current.style.height;
+            if (state && currentHeight === '0px') {
+                openDetails();
+            } else if (!state && currentHeight !== '0px') {
+                closeDetails();
+            }
+        }
+    }, [ openDetails, closeDetails ]);
+
+    useEffect(() => {
+        setDetailsState(!!isActive);
+    }, [ isActive, setDetailsState ]);
 
     return (
         <article

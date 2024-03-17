@@ -66,7 +66,7 @@ export const useFetchProducts = function <ProductMap, ProductApi> (url: string, 
             aborted = true;
             abortController.abort();
         };
-    }, [ urlWithOptions ]);
+    }, [ mapper, urlWithOptions ]);
 
     return {
         pending, options, setOptions, error, products,

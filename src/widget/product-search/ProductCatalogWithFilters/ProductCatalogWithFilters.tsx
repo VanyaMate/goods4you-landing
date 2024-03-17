@@ -35,11 +35,8 @@ const ProductCatalogWithFilters: React.FC<ProductCatalogWithFiltersProps> = (pro
      */
 
     const {
-              pending,
               products,
-              options,
               setOptions,
-              error,
           } = useFetchProducts<Product, FakeStoreApiProduct>('https://fakestoreapi.com/products', {}, fakeStoreProductMapper);
 
     // Mock filters
