@@ -3,7 +3,7 @@ import { delay } from '$/_tests_/vitest/helpers/delay.ts';
 import Button from '@/shared/ui/buttons/Button/Button.tsx';
 
 
-test.use({ viewport: { width: 500, height: 500 } });
+test.use({ viewport: { width: 500, height: 800 } });
 
 test('Menu with burger on mobile size', async ({ mount, page }) => {
     // Mount a component. Returns locator pointing to the component.
