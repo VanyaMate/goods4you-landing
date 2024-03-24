@@ -1,0 +1,80 @@
+:root body.button-default {
+    $buttonPaddingVertical   : 47px;
+    $buttonPaddingHorizontal : 22px;
+    $buttonBorderWidth       : 1px;
+
+    .button {
+        cursor     : pointer;
+        outline    : none;
+        border     : 2px solid transparent;
+        transition : var(--transition-fast);
+        background : inherit;
+        color      : inherit;
+
+        &:not(.button_clear) {
+            display         : inline-flex;
+            align-items     : center;
+            justify-content : center;
+            // width           : fit-content;
+            border-radius   : var(--border-radius);
+            padding         : $buttonPaddingHorizontal $buttonPaddingVertical;
+        }
+
+        :hover {
+            background : var(--background-main);
+            color      : var(--color-main);
+        }
+
+        &.button_quad {
+            width   : 40px;
+            height  : 40px;
+            padding : 0;
+        }
+
+        &.button_primary {
+            background : var(--background-primary);
+            color      : var(--color-invert);
+
+            &:hover,
+            &:focus {
+                background : var(--background-primary);
+                color      : var(--color-invert);
+                box-shadow : 0 0 0 2px var(--background-main), 0 0 0 4px var(--background-primary);
+            }
+        }
+
+        &.button_second {
+            background : var(--background-second);
+            color      : var(--color-invert);
+
+            &:hover,
+            &:focus {
+                box-shadow : 0 0 0 2px var(--background-main), 0 0 0 4px var(--background-mark);
+                background : var(--background-mark);
+                color      : var(--color-invert);
+            }
+        }
+
+        &.button_light {
+            &:hover,
+            &:focus {
+                box-shadow : 0 0 0 2px var(--background-light), 0 0 0 4px var(--background-second);
+                background : rgba(255, 255, 255, .3);
+                color      : inherit;
+            }
+        }
+
+        &.button_border {
+            background : var(--background-main);
+            color      : var(--color-main);
+            border     : $buttonBorderWidth solid var(--color-main);
+            padding    : calc($buttonPaddingHorizontal - $buttonBorderWidth) calc($buttonPaddingVertical - $buttonBorderWidth);
+
+            &:hover,
+            &:focus {
+                box-shadow : 0 0 0 2px var(--background-main), 0 0 0 4px var(--background-second);
+                background : var(--background-light);
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+.container {
+    background : var(--background-main);
+    color      : var(--color-main);
+
+    &.mark {
+        background : var(--background-mark);
+        color      : var(--color-invert);
+    }
+
+    &.light {
+        background : var(--background-light);
+        color      : var(--color-main);
+    }
+
+    &.second {
+        background : var(--background-second);
+        color      : var(--color-invert);
+    }
+}

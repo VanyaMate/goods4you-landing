@@ -1,0 +1,38 @@
+:root body.font-size-default {
+    font-size                 : var(--font-size-medium);
+
+    --font-size-title-level-1 : 36px;
+    --font-size-title-level-2 : 30px;
+    --font-size-title-level-3 : 24px;
+    --font-size-title-level-4 : 20px;
+    --font-size-title-level-5 : 16px;
+    --font-size-title-level-6 : 14px;
+
+    --font-size-small         : 12px;
+    --font-size-medium        : 16px;
+    --font-size-large         : 20px;
+
+    h1 {
+        font-size : var(--font-size-title-level-1);
+    }
+
+    h2 {
+        font-size : var(--font-size-title-level-2);
+    }
+
+    h3 {
+        font-size : var(--font-size-title-level-3);
+    }
+
+    h4 {
+        font-size : var(--font-size-title-level-4);
+    }
+
+    h5 {
+        font-size : var(--font-size-title-level-5);
+    }
+
+    h6 {
+        font-size : var(--font-size-title-level-6);
+    }
+}

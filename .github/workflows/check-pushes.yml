@@ -9,25 +9,85 @@ on:
       - '!master'
 
 jobs:
-  build:
-
+  simple_tests:
+    if: contains(github.event.head_commit.message, '%test%')
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [ 18.x ]
-
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm i
       - run: npm run lint
       - run: npm run test
+
+  build:
+    if: contains(github.event.head_commit.message, '%build%')
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm i
       - run: npm run build
+
+  pw_tests:
+    if: contains(github.event.head_commit.message, '%pw_test%')
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm i
+      - run: npm run pw:install
+      - run: npm run test:pw-linux
+
+  pw_update:
+    if: contains(github.event.head_commit.message, '%pw_update%')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm i
+      - run: npm run pw:install
+      - run: npm run test:pw-update-linux
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update PW-snapshot"
+
+  notify:
+    if: ${{ always() && contains(github.event.head_commit.message, '%tg_notify%')}}
+    runs-on: ubuntu-latest
+    needs:
+      - simple_tests
+      - build
+      - pw_tests
+      - pw_update
+
+    steps:
       - name: Telegram success notification
         uses: VanyaMate/github-action-telegram-notification@v0.20
         with:

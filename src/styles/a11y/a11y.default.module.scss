@@ -1,0 +1,18 @@
+:root body.a11y-default {
+    *:focus {
+        box-shadow    : 0 0 0 2px var(--background-main), 0 0 0 4px var(--background-second), 0 0 0 2px var(--background-primary) inset;
+        border-radius : var(--offset-extra-small);
+        outline       : 0 solid transparent;
+        transition    : .2s;
+    }
+
+    #root[inert] {
+        transition : .4s;
+        filter     : blur(5px);
+    }
+
+    &.block-scroll {
+        overflow : hidden;
+    }
+}
+

@@ -1,0 +1,44 @@
+.container {
+    &.main_color {
+        color : var(--color-main)
+    }
+
+    &.inversion_color {
+        color : var(--color-invert)
+    }
+
+    &.link_color {
+        color : var(--purple);
+    }
+
+    &.danger_color {
+        color : var(--red)
+    }
+
+    &.light_color {
+        color : var(--color-light)
+    }
+
+    &.second_color {
+        color : var(--color-second);
+    }
+
+    &.small_size {
+        font-size : var(--font-size-small);
+    }
+
+    &.medium_size {
+        font-size : var(--font-size-medium);
+    }
+
+    &.large_size {
+        font-size : var(--font-size-large);
+    }
+
+    &.lines {
+        display            : -webkit-box;
+        -webkit-box-orient : vertical;
+        text-overflow      : ellipsis;
+        overflow           : hidden;
+    }
+}

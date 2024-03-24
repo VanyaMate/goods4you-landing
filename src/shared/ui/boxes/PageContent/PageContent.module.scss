@@ -1,0 +1,26 @@
+.container {
+    max-width : calc(var(--page-width) + var(--offset-medium));
+    margin    : 0 auto;
+
+    .content {
+        @media screen and (max-width : 450px) {
+            margin : 0 var(--offset-small);
+        }
+
+        &.paddings {
+            padding : 60px 0;
+
+            @media screen and (max-width : 700px) {
+                padding : 40px 0;
+            }
+
+            @media screen and (max-width : 450px) {
+                padding : 20px 0;
+            }
+        }
+
+        max-width  : 100%;
+        margin     : 0 var(--offset-medium);
+        transition : var(--transition-fast);
+    }
+}

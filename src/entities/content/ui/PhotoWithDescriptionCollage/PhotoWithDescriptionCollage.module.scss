@@ -1,0 +1,46 @@
+$offset : 100px;
+
+.container {
+    display     : grid;
+    gap         : var(--offset-medium);
+    align-items : start;
+
+    @media screen and (min-width : 800px) {
+        padding-top           : $offset;
+        grid-template-columns : repeat(3, 1fr);
+
+        .image {
+            margin-top : -$offset;
+
+            &:nth-child(3n + 2) {
+                margin-top : 0;
+            }
+        }
+    }
+
+    @media screen and (max-width : 800px) {
+        padding-top           : $offset;
+        grid-template-columns : repeat(2, 1fr);
+
+        .image {
+            margin-top : -$offset;
+
+            &:nth-child(2n) {
+                margin-top : 0;
+            }
+        }
+    }
+
+    @media screen and (max-width : 550px) {
+        padding-top           : 0;
+        grid-template-columns : repeat(1, 1fr);
+
+        .image {
+            margin-top : 0;
+
+            &:nth-child(2n) {
+                margin-top : 0;
+            }
+        }
+    }
+}

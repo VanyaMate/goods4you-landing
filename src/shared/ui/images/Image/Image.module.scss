@@ -1,0 +1,49 @@
+.container {
+    display       : block;
+    width         : 100%;
+    overflow      : hidden;
+    position      : relative;
+    border-radius : var(--offset-small);
+    //background    : var(--background-light);
+
+    &.loading {
+        &:before {
+            content       : '';
+            position      : absolute;
+            z-index       : 2;
+            top           : var(--offset-small);
+            right         : var(--offset-small);
+            width         : 30px;
+            height        : 30px;
+            border        : 3px solid var(--background-primary);
+            border-bottom : 3px solid transparent;
+            border-radius : 50%;
+            animation     : var(--rotate);
+        }
+    }
+
+    &.quad {
+        &:after {
+            content     : '';
+            padding-top : 100%;
+            display     : block;
+        }
+
+        .image {
+            position  : absolute;
+            top       : 50%;
+            left      : 50%;
+            transform : translate(-50%, -50%);
+
+            &:not(.maxSize) {
+                max-width  : 100%;
+                max-height : 100%;
+            }
+
+            &.maxSize {
+                min-width  : 100%;
+                min-height : 100%;
+            }
+        }
+    }
+}
